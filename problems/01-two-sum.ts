@@ -13,17 +13,18 @@ function two_sum(listNumbers: number[], target: number): number[] {
     let pair_index: number[] = []
     for (let i = 0; i < listNumbers.length; i++) {
         const currentValue = listNumbers[i]
-        const subtractionTarget = currentValue - target
-        const foundPair = listNumbers.find((num) => num === subtractionTarget)
+        const nextValue = listNumbers[i + 1]
 
-        if (foundPair) {
+        if (currentValue + nextValue === target) {
             pair_index.push(i)
-            pair_index.push(listNumbers.indexOf(foundPair))
+            pair_index.push(i + 1)
         }
-
-        continue
     }
 
     console.log(pair_index)
     return pair_index
 }
+
+two_sum([2, 7, 11, 15], 9)
+two_sum([3, 2, 4], 6)
+two_sum([3, 3], 6)
