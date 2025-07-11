@@ -9,22 +9,29 @@
     Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
  */
 
-function two_sum(listNumbers: number[], target: number): number[] {
+function twoSum(nums: number[], target: number): number[] {
     let pair_index: number[] = []
-    for (let i = 0; i < listNumbers.length; i++) {
-        const currentValue = listNumbers[i]
-        const nextValue = listNumbers[i + 1]
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            const currentValue = nums[i]
+            const nextValue = nums[j]
 
-        if (currentValue + nextValue === target) {
-            pair_index.push(i)
-            pair_index.push(i + 1)
+            if (currentValue + nextValue === target) {
+                pair_index.push(i)
+                pair_index.push(j)
+                break
+            }
+        }
+
+        if (pair_index.length) {
+            break
         }
     }
 
-    console.log(pair_index)
     return pair_index
 }
 
-two_sum([2, 7, 11, 15], 9)
-two_sum([3, 2, 4], 6)
-two_sum([3, 3], 6)
+twoSum([2, 7, 11, 15], 9)
+twoSum([3, 2, 4], 6)
+twoSum([3, 3], 6)
+twoSum([3, 2, 3], 6)
